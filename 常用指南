@@ -1,0 +1,19 @@
+1、部署流程方式。
+	測試環境。使用gitlab ci 自動化構建，開發推送代理到測試分支，觸發構建，在構建服務器中構建完成後，推送到服務器上。前端是推送dist構建完成代碼即可，後端構建成容器鏡像到aws 鏡像倉庫。再到測試服務器中拉取構建。
+
+	正式環境。使用gitlab ci構建，開發推送代碼後，由master管理點擊構建按鈕進行構建版本。前端構建完推送到構建服務器/data目錄下。由運維到前端服務器/data 目錄下執行bash  bash.sh 拉取具體項目。
+	後端構建完成後推送到aws 正式倉庫中，告訴運維構建鏡像版本號，由運維在具體服務器上執行修改/opt/.env 版本號後再docker-composer -f serverjava01.yaml up -d拉取構建啟動。
+
+2、線上服務器使用前後端分離。前端、後端專用服務器。並且設置防火墻隔離。線上訪問端口。
+  前端訪問後端api網關使用nginx設置。在/usr/local/openresty/nginx/conf/otc/api.conf中設置。
+
+  後端內網互相調用使用註冊中心。註冊中心一般在java01服務器中。調用第三方服務在java01的nginx網關中設置。設置目錄再/usr/local/openresty/nginx/conf/otc/javahttp.conf中。
+
+3、線上重要版本發佈需要停止前端nginx服務器，防止流量再進入服務器中。需要把正式環境和預發佈環境中的一起關閉。
+
+4、otc有2個海外代理域名。代理域名是otc365.de和otc365.ph 分別部署在2個服務器上。使用nginx做反向代理。
+
+5、管理後台需要使用代理才能。否則返回官網404頁面。在nginx中配置。目錄在/usr/local/openresty/nginx/conf/otc365/deamon.conf。
+
+6、线上发布需要注意预发布环境中前端带有ip限制，切换的时候需要先切换下预发布前端配置文件
+

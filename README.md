@@ -20,6 +20,10 @@ included:
 
 This folder is my devops course on udemy, the course is [DevOps Beginners to Advanced | Decoding DevOps with Projects](https://www.udemy.com/course/decodingdevops/)
 
+## frontend-learn
+
+This folder is my frontend learning, get the question from “前端每日一题” in vscode extensions
+
 ## go-learn
 
 this folder is my go note and code
@@ -45,3 +49,7 @@ Current Function
   - Random Quick Sort
 
 The below are the link to the course I am taking
+
+## test-website
+
+this folder is my test website for javascript listener

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"reflect"
@@ -33,7 +34,8 @@ func main() {
 	// CastingFunction()
 	// StructFunction()
 	// LearnFunctionFunction()
-	FlowControlFunction()
+	// FlowControlFunction()
+	FileControlFunction()
 }
 
 func MapTutorial() {
@@ -389,4 +391,54 @@ func testChannel(c chan string) {
 		c <- user
 	}
 	close(c)
+}
+
+func FileControlFunction() {
+	// create file
+	// file, err := os.Create("./heihei.txt")
+	// if err != nil {
+	// 	fmt.Println("create file error: ", err)
+	// 	return
+	// }
+	// defer file.Close()
+
+	// open file
+	// O_RDONLY : Open a file for read only operations
+	// O_WRONLY : Open a file for write only operations
+	// O_RDWR : Open a file for read-write
+	// O_APPEND :It appends data to the file when writing
+	// O_CREATE: It creates a file if none exists.
+	openFile, err := os.OpenFile("heihei.txt", os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Println("open file error: ", err)
+		return
+	}
+	defer openFile.Close()
+
+	// write file
+	// b := []byte("Hello World!")
+	// _, err = openFile.Write(b)
+	// if err != nil {
+	// 	fmt.Println("Write file error: ", err)
+	// 	return
+	// }
+	// b2 := []byte("Log file write!!")
+	// _, err = openFile.Write(b2)
+	// if err != nil {
+	// 	fmt.Println("Write file error: ", err)
+	// }
+	b := []byte("Hello World!!!\n")
+	// err = ioutil.WriteFile("heihei.txt", b, 0644)
+	openFile.Write(b)
+	if err != nil {
+		fmt.Println("err: ", err)
+	}
+
+	// read file
+	readFile, err := ioutil.ReadFile("heihei.txt")
+	if err != nil {
+		fmt.Println("err: ", err)
+		return
+	}
+	fmt.Println(string(readFile))
 }

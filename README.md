@@ -20,6 +20,14 @@ included:
 
 This folder is my devops course on udemy, the course is [DevOps Beginners to Advanced | Decoding DevOps with Projects](https://www.udemy.com/course/decodingdevops/)
 
+## flutter-learning
+
+This folder is my flutter learning, from the official website [Flutter](https://flutter.dev/)
+
+### dart-learning
+
+Init the knowledge for flutter with using dart language
+
 ## frontend-learn
 
 This folder is my frontend learning, get the question from “前端每日一题” in vscode extensions

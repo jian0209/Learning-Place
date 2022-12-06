@@ -6,14 +6,14 @@ Project Description
 
 ### Todo
 
-- [ ] golang enchange security  
-- [ ] from tiktok open the bad code in github and learn it  
+- [ ] 每日5题  
 
 ### In Progress
 
-- [ ] 每日5题  
+- [ ] golang enchange security  
 
 ### Done ✓
 
 - [x] flow control  
+- [x] from tiktok open the bad code in github and learn it  
 
